@@ -16,7 +16,7 @@
 # IMPORTED Targets
 # ^^^^^^^^^^^^^^^^
 #
-# This module defines the :prop_tgt:`IMPORTED` target ``LambdAurora::lambdacommon`` and ``LambdAurora::clambdacommon``,
+# This module defines the :prop_tgt:`IMPORTED` target ``AperLambda::lambdacommon`` and ``AperLambda::clambdacommon``,
 # if λcommon has been found.
 #
 # Result Variables
@@ -140,18 +140,18 @@ if (lambdacommon_FOUND)
     endif ()
   endif ()
 
-  if (NOT TARGET LambdAurora::lambdacommon)
-    add_library(LambdAurora::lambdacommon UNKNOWN IMPORTED)
-    set_target_properties(LambdAurora::lambdacommon PROPERTIES
+  if (NOT TARGET AperLambda::lambdacommon)
+    add_library(AperLambda::lambdacommon UNKNOWN IMPORTED)
+    set_target_properties(AperLambda::lambdacommon PROPERTIES
       INTERFACE_INCLUDE_DIRECTORIES "${LAMBDACOMMON_INCLUDE_DIRS}")
 
-    set_property(TARGET LambdAurora::lambdacommon APPEND PROPERTY IMPORTED_LOCATION "${LAMBDACOMMON_lambdacommon_LIBRARY}")
+    set_property(TARGET AperLambda::lambdacommon APPEND PROPERTY IMPORTED_LOCATION "${LAMBDACOMMON_lambdacommon_LIBRARY}")
   endif ()
-  if (NOT TARGET LambdAurora::clambdacommon)
-    add_library(LambdAurora::clambdacommon UNKNOWN IMPORTED)
-    set_target_properties(LambdAurora::clambdacommon PROPERTIES
+  if (NOT TARGET AperLambda::clambdacommon)
+    add_library(AperLambda::clambdacommon UNKNOWN IMPORTED)
+    set_target_properties(AperLambda::clambdacommon PROPERTIES
       INTERFACE_INCLUDE_DIRECTORIES "${LAMBDACOMMON_INCLUDE_DIRS}")
 
-    set_property(TARGET LambdAurora::clambdacommon APPEND PROPERTY IMPORTED_LOCATION "${LAMBDACOMMON_clambdacommon_LIBRARY}")
+    set_property(TARGET AperLambda::clambdacommon APPEND PROPERTY IMPORTED_LOCATION "${LAMBDACOMMON_clambdacommon_LIBRARY}")
   endif ()
 endif ()
