@@ -31,6 +31,8 @@
 #   CURL_VERSION - Version of CURL.
 #   CURL_FOUND - True if CURL has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(CURL_INCLUDE_DIR
     NAMES
@@ -59,7 +61,8 @@ if (CURL_INCLUDE_DIR)
     set(CURL_VERSION "${CURL_VERSION_MAJOR}.${CURL_VERSION_MINOR}.${CURL_VERSION_PATCH}")
 endif (CURL_INCLUDE_DIR)
 
-FIND_LIBRARY(CURL_libcurl_LIBRARY
+# Look for the library file.
+find_library(CURL_libcurl_LIBRARY
     NAMES
         curl
         libcurl
@@ -76,7 +79,6 @@ FIND_LIBRARY(CURL_libcurl_LIBRARY
         "The absolute path to CURL library.")
 mark_as_advanced(CURL_curl_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(CURL
     REQUIRED_VARS CURL_libcurl_LIBRARY CURL_INCLUDE_DIR
     VERSION_VAR CURL_VERSION)

@@ -30,6 +30,9 @@
 #   GLEW_LIBRARIES - Libraries to link against GLEW.
 #   GLEW_FOUND - True if GLEW has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+include(SelectLibraryConfigurations)
+
 # Look for the header file.
 find_path(GLEW_INCLUDE_DIR
     NAMES
@@ -47,7 +50,8 @@ find_path(GLEW_INCLUDE_DIR
         "The directory where GL/glew.h resides")
 mark_as_advanced(GLEW_INCLUDE_DIR)
 
-FIND_LIBRARY(GLEW_LIBRARY_RELEASE
+# Look for the library release file.
+find_library(GLEW_LIBRARY_RELEASE
     NAMES
         GLEW
         glew32
@@ -66,7 +70,8 @@ FIND_LIBRARY(GLEW_LIBRARY_RELEASE
     DOC
         "The absolute path to GLEW Release library.")
 
-FIND_LIBRARY(GLEW_LIBRARY_DEBUG
+# Look for the library debug file.
+find_library(GLEW_LIBRARY_DEBUG
     NAMES
         GLEWd
         glew32d
@@ -84,10 +89,9 @@ FIND_LIBRARY(GLEW_LIBRARY_DEBUG
     DOC
         "The absolute path to GLEW Debug library.")
 
-include(SelectLibraryConfigurations)
+# Select the library configuration for GLEW.
 select_library_configurations(GLEW)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GLEW
     REQUIRED_VARS GLEW_LIBRARY GLEW_INCLUDE_DIR
     VERSION_VAR GLEW_VERSION)

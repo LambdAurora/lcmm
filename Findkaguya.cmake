@@ -23,6 +23,8 @@
 #   KAGUYA_INCLUDE_DIRS - Include directories for kaguya.
 #   kaguya_FOUND - True if kaguya has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(KAGUYA_INCLUDE_DIR
     NAMES
@@ -40,7 +42,6 @@ find_path(KAGUYA_INCLUDE_DIR
         "The directory where headers files of kaguya resides")
 mark_as_advanced(KAGUYA_INCLUDE_DIR)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(kaguya
     REQUIRED_VARS KAGUYA_INCLUDE_DIR)
 

@@ -21,6 +21,8 @@
 #   SOIL_LIBRARIES - Libraries to link against SOIL.
 #   SOIL_FOUND - True if SOIL has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(SOIL_INCLUDE_DIR
     NAMES
@@ -38,7 +40,8 @@ find_path(SOIL_INCLUDE_DIR
         "The directory where headers files of SOIL resides")
 mark_as_advanced(SOIL_INCLUDE_DIR)
 
-FIND_LIBRARY(SOIL_SOIL_LIBRARY
+# Look for the library file.
+find_library(SOIL_SOIL_LIBRARY
     NAMES
         libSOIL
         SOIL
@@ -54,7 +57,6 @@ FIND_LIBRARY(SOIL_SOIL_LIBRARY
         "The absolute path to SOIL library.")
 mark_as_advanced(SOIL_SOIL_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SOIL DEFAULT_MSG SOIL_SOIL_LIBRARY SOIL_INCLUDE_DIR)
 
 set(SOIL_INCLUDE_DIRS ${SOIL_INCLUDE_DIR})

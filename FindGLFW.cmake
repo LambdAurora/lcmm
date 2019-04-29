@@ -30,6 +30,8 @@
 #   GLFW_LIBRARIES - Libraries to link against GLFW.
 #   GLFW_FOUND - True if GLFW has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(GLFW_INCLUDE_DIR
     NAMES
@@ -58,7 +60,8 @@ if (GLFW_INCLUDE_DIR)
     set(GLFW_VERSION "${GLFW_VERSION_MAJOR}.${GLFW_VERSION_MINOR}.${GLFW_VERSION_REVISION}")
 endif (GLFW_INCLUDE_DIR)
 
-FIND_LIBRARY(GLFW_glfw_LIBRARY
+# Look for the library file.
+find_library(GLFW_glfw_LIBRARY
     NAMES
         libglfw
         glfw3
@@ -75,7 +78,6 @@ FIND_LIBRARY(GLFW_glfw_LIBRARY
         "The absolute path to GLFW library.")
 mark_as_advanced(GLFW_glfw_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GLFW
     REQUIRED_VARS GLFW_glfw_LIBRARY GLFW_INCLUDE_DIR
     VERSION_VAR GLFW_VERSION)

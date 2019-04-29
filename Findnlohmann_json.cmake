@@ -30,6 +30,8 @@
 #   NLOHMANN_JSON_VERSION - Version of nlohmann_json.
 #   nlohmann_json_FOUND - True if nlohmann_json has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(NLOHMANN_JSON_INCLUDE_DIR
     NAMES
@@ -60,7 +62,6 @@ if (NLOHMANN_JSON_INCLUDE_DIR)
     set(NLOHMANN_JSON_VERSION "${NLOHMANN_JSON_VERSION_MAJOR}.${NLOHMANN_JSON_VERSION_MINOR}.${NLOHMANN_JSON_VERSION_PATCH}")
 endif (NLOHMANN_JSON_INCLUDE_DIR)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(nlohmann_json
     REQUIRED_VARS NLOHMANN_JSON_INCLUDE_DIR
     VERSION_VAR NLOHMANN_JSON_VERSION)

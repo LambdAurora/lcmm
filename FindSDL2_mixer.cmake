@@ -31,6 +31,8 @@
 #   SDL2_MIXER_VERSION - Version of SDL2_mixer.
 #   SDL2_mixer_FOUND - True if SDL2_mixer has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(SDL2_MIXER_INCLUDE_DIR
     NAMES
@@ -59,7 +61,7 @@ if (SDL2_MIXER_INCLUDE_DIR)
     set(SDL2_MIXER_VERSION "${SDL2_MIXER_VERSION_MAJOR}.${SDL2_MIXER_VERSION_MINOR}.${SDL2_MIXER_VERSION_PATCH}")
 endif (SDL2_MIXER_INCLUDE_DIR)
 
-FIND_LIBRARY(SDL2_SDL2mixer_LIBRARY
+find_library(SDL2_SDL2mixer_LIBRARY
     NAMES
         libSDL2_mixer
         SDL2_mixer
@@ -75,7 +77,6 @@ FIND_LIBRARY(SDL2_SDL2mixer_LIBRARY
         "The absolute path to SDL2_mixer library.")
 mark_as_advanced(SDL2_SDL2mixer_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SDL2_mixer
     REQUIRED_VARS SDL2_SDL2mixer_LIBRARY SDL2_MIXER_INCLUDE_DIR
     VERSION_VAR SDL2_MIXER_VERSION)

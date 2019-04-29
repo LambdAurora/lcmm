@@ -21,6 +21,8 @@
 #   HARFBUZZ_LIBRARIES - Libraries to link against HarfBuzz.
 #   HARFBUZZ_FOUND - True if HarfBuzz has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(HARFBUZZ_INCLUDE_DIR
     NAMES
@@ -49,7 +51,8 @@ if (HarfBuzz_INCLUDE_DIR)
     set(HARFBUZZ_VERSION "${HB_VERSION_MAJOR}.${HB_VERSION_MINOR}.${HB_VERSION_MICRO}")
 endif ()
 
-FIND_LIBRARY(HARFBUZZ_HarfBuzz_LIBRARY
+# Look for the library file.
+find_library(HARFBUZZ_HarfBuzz_LIBRARY
     NAMES
         libharfbuzz
         harfbuzz
@@ -65,7 +68,6 @@ FIND_LIBRARY(HARFBUZZ_HarfBuzz_LIBRARY
         "The absolute path to HarfBuzz library.")
 mark_as_advanced(HARFBUZZ_HarfBuzz_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(HarfBuzz
     REQUIRED_VARS HARFBUZZ_HarfBuzz_LIBRARY HARFBUZZ_INCLUDE_DIR
     VERSION_VAR HARFBUZZ_VERSION)

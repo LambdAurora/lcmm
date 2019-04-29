@@ -30,6 +30,8 @@
 #   NLOHMANN_FIFO_MAP_VERSION - Version of nlohmann_fifo_map.
 #   nlohmann_fifo_map_FOUND - True if nlohmann_fifo_map has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(NLOHMANN_FIFO_MAP_INCLUDE_DIR
     NAMES
@@ -50,7 +52,6 @@ find_path(NLOHMANN_FIFO_MAP_INCLUDE_DIR
         "The directory where headers files of nlohmann_fifo_map resides")
 mark_as_advanced(NLOHMANN_FIFO_MAP_INCLUDE_DIR)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(nlohmann_fifo_map
     REQUIRED_VARS NLOHMANN_FIFO_MAP_INCLUDE_DIR)
 

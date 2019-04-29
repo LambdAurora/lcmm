@@ -30,6 +30,8 @@
 #   libsndfile_LIBRARIES - Libraries to link against libsndfile.
 #   libsndfile_FOUND - True if libsndfile has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(libsndfile_INCLUDE_DIR
     NAMES
@@ -47,7 +49,8 @@ find_path(libsndfile_INCLUDE_DIR
         "The directory where libsndfile/libsndfile3.h resides")
 mark_as_advanced(libsndfile_INCLUDE_DIR)
 
-FIND_LIBRARY(libsndfile_libsndfile_LIBRARY
+# Look for the library file.
+find_library(libsndfile_libsndfile_LIBRARY
     NAMES
         libsndfile
         libsndfile-1
@@ -64,7 +67,6 @@ FIND_LIBRARY(libsndfile_libsndfile_LIBRARY
         "The absolute path to libsndfile library.")
 mark_as_advanced(libsndfile_libsndfile_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(libsndfile
     REQUIRED_VARS libsndfile_libsndfile_LIBRARY libsndfile_INCLUDE_DIR
     VERSION_VAR libsndfile_VERSION)

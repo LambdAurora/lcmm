@@ -30,6 +30,8 @@
 #   DISCORDRPC_LIBRARIES - Libraries to link against DiscordRPC.
 #   DiscordRPC_FOUND - True if DiscordRPC has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(DISCORDRPC_INCLUDE_DIR
     NAMES
@@ -47,7 +49,8 @@ find_path(DISCORDRPC_INCLUDE_DIR
         "The directory where discord_rpc.h resides")
 mark_as_advanced(DISCORDRPC_INCLUDE_DIR)
 
-FIND_LIBRARY(DiscordRPC_LIBRARY
+# Look for the library file.
+find_library(DiscordRPC_LIBRARY
     NAMES
         libdiscord-rpc
         discord-rpc
@@ -63,7 +66,6 @@ FIND_LIBRARY(DiscordRPC_LIBRARY
         "The absolute path to DiscordRPC library.")
 mark_as_advanced(DiscordRPC_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(DiscordRPC
     REQUIRED_VARS DiscordRPC_LIBRARY DISCORDRPC_INCLUDE_DIR)
 

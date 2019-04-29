@@ -20,6 +20,8 @@
 #   GLM_INCLUDE_DIRS - Include directories for GLM (OpenGL Mathematics).
 #   GLM_FOUND - True if GLM (OpenGL Mathematics) has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(GLM_INCLUDE_DIR
     NAMES
@@ -37,7 +39,6 @@ find_path(GLM_INCLUDE_DIR
         "The directory where headers files of GLM (OpenGL Mathematics) resides")
 mark_as_advanced(GLM_INCLUDE_DIR)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GLM DEFAULT_MSG GLM_INCLUDE_DIR)
 
 set(GLM_INCLUDE_DIRS ${GLM_INCLUDE_DIR})

@@ -32,6 +32,8 @@
 #   LAMBDACOMMON_VERSION - Version of λcommon.
 #   lambdacommon_FOUND - True if λcommon has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(LAMBDACOMMON_INCLUDE_DIR
     NAMES
@@ -70,6 +72,7 @@ if (LAMBDACOMMON_INCLUDE_DIR)
     endif ()
 endif (LAMBDACOMMON_INCLUDE_DIR)
 
+# Look for the lambdacommon_info executable.
 find_program(LAMBDACOMMON_INFO_EXECUTABLE
     NAMES
         lambdacommon_info
@@ -85,7 +88,8 @@ find_program(LAMBDACOMMON_INFO_EXECUTABLE
         "The absolute path to λcommon_info executable.")
 mark_as_advanced(LAMBDACOMMON_INFO_EXECUTABLE)
 
-FIND_LIBRARY(LAMBDACOMMON_lambdacommon_LIBRARY
+# Look for the library file.
+find_library(LAMBDACOMMON_lambdacommon_LIBRARY
     NAMES
         liblambdacommon
         lambdacommon
@@ -101,7 +105,7 @@ FIND_LIBRARY(LAMBDACOMMON_lambdacommon_LIBRARY
         "The absolute path to λcommon library.")
 mark_as_advanced(LAMBDACOMMON_lambdacommon_LIBRARY)
 
-FIND_LIBRARY(LAMBDACOMMON_clambdacommon_LIBRARY
+find_library(LAMBDACOMMON_clambdacommon_LIBRARY
         NAMES
         libclambdacommon
         clambdacommon
@@ -117,7 +121,6 @@ FIND_LIBRARY(LAMBDACOMMON_clambdacommon_LIBRARY
         "The absolute path to λcommon C wrapper library.")
 mark_as_advanced(LAMBDACOMMON_clambdacommon_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(lambdacommon
     REQUIRED_VARS LAMBDACOMMON_lambdacommon_LIBRARY LAMBDACOMMON_clambdacommon_LIBRARY LAMBDACOMMON_INCLUDE_DIR
     VERSION_VAR LAMBDACOMMON_VERSION)

@@ -31,6 +31,8 @@
 #   SDL2_IMAGE_VERSION - Version of SDL2_image.
 #   SDL2_image_FOUND - True if SDL2_image has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(SDL2_IMAGE_INCLUDE_DIR
     NAMES
@@ -59,7 +61,7 @@ if (SDL2_IMAGE_INCLUDE_DIR)
     set(SDL2_IMAGE_VERSION "${SDL2_IMAGE_VERSION_MAJOR}.${SDL2_IMAGE_VERSION_MINOR}.${SDL2_IMAGE_VERSION_PATCH}")
 endif (SDL2_IMAGE_INCLUDE_DIR)
 
-FIND_LIBRARY(SDL2_SDL2image_LIBRARY
+find_library(SDL2_SDL2image_LIBRARY
     NAMES
         libSDL2_image
         SDL2_image
@@ -75,7 +77,6 @@ FIND_LIBRARY(SDL2_SDL2image_LIBRARY
         "The absolute path to SDL2_image library.")
 mark_as_advanced(SDL2_SDL2image_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SDL2_image
     REQUIRED_VARS SDL2_SDL2image_LIBRARY SDL2_IMAGE_INCLUDE_DIR
     VERSION_VAR SDL2_IMAGE_VERSION)

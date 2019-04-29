@@ -31,6 +31,8 @@
 #   SDL2_GFX_VERSION - Version of SDL2_gfx.
 #   SDL2_gfx_FOUND - True if SDL2_gfx has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(SDL2_GFX_INCLUDE_DIR
     NAMES
@@ -59,7 +61,7 @@ if (SDL2_GFX_INCLUDE_DIR)
     set(SDL2_GFX_VERSION "${SDL2_GFX_VERSION_MAJOR}.${SDL2_GFX_VERSION_MINOR}.${SDL2_GFX_VERSION_PATCH}")
 endif (SDL2_GFX_INCLUDE_DIR)
 
-FIND_LIBRARY(SDL2_SDL2gfx_LIBRARY
+find_library(SDL2_SDL2gfx_LIBRARY
     NAMES
         libSDL2_gfx
         SDL2_gfx
@@ -75,7 +77,6 @@ FIND_LIBRARY(SDL2_SDL2gfx_LIBRARY
         "The absolute path to SDL2_gfx library.")
 mark_as_advanced(SDL2_SDL2gfx_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SDL2_gfx
     REQUIRED_VARS SDL2_SDL2gfx_LIBRARY SDL2_GFX_INCLUDE_DIR
     VERSION_VAR SDL2_GFX_VERSION)

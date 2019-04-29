@@ -32,6 +32,8 @@
 #   SDL2_ADDITIONAL_LINK_LIBRARIES - Additional libraries to link to make SDL2 works.
 #   SDL2_FOUND - True if SDL2 has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(SDL2_INCLUDE_DIR
     NAMES
@@ -60,7 +62,8 @@ if (SDL2_INCLUDE_DIR)
     set(SDL2_VERSION "${SDL2_VERSION_MAJOR}.${SDL2_VERSION_MINOR}.${SDL2_VERSION_PATCH}")
 endif (SDL2_INCLUDE_DIR)
 
-FIND_LIBRARY(SDL2_SDL2_LIBRARY
+# Look for the library file.
+find_library(SDL2_SDL2_LIBRARY
     NAMES
         libSDL2
         SDL2
@@ -76,7 +79,7 @@ FIND_LIBRARY(SDL2_SDL2_LIBRARY
         "The absolute path to SDL2 library.")
 mark_as_advanced(SDL2_SDL2_LIBRARY)
 
-FIND_LIBRARY(SDL2_SDL2main_LIBRARY
+find_library(SDL2_SDL2main_LIBRARY
         NAMES
         libSDL2main
         SDL2main
@@ -92,7 +95,7 @@ FIND_LIBRARY(SDL2_SDL2main_LIBRARY
       "The absolute path to SDL2main library.")
 mark_as_advanced(SDL2_SDL2main_LIBRARY)
 
-FIND_LIBRARY(SDL2_SDL2test_LIBRARY
+find_library(SDL2_SDL2test_LIBRARY
         NAMES
         libSDL2_test
         libSDL2test
@@ -110,7 +113,6 @@ FIND_LIBRARY(SDL2_SDL2test_LIBRARY
       "The absolute path to SDL2test library.")
 mark_as_advanced(SDL2_SDL2test_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SDL2
     REQUIRED_VARS SDL2_SDL2_LIBRARY SDL2_SDL2main_LIBRARY SDL2_INCLUDE_DIR
     VERSION_VAR SDL2_VERSION)

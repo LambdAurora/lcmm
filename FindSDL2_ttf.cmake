@@ -31,6 +31,8 @@
 #   SDL2_TTF_VERSION - Version of SDL2_ttf.
 #   SDL2_ttf_FOUND - True if SDL2_ttf has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(SDL2_TTF_INCLUDE_DIR
     NAMES
@@ -59,7 +61,7 @@ if (SDL2_TTF_INCLUDE_DIR)
     set(SDL2_TTF_VERSION "${SDL2_TTF_VERSION_MAJOR}.${SDL2_TTF_VERSION_MINOR}.${SDL2_TTF_VERSION_PATCH}")
 endif (SDL2_TTF_INCLUDE_DIR)
 
-FIND_LIBRARY(SDL2_SDL2ttf_LIBRARY
+find_library(SDL2_SDL2ttf_LIBRARY
     NAMES
         libSDL2_ttf
         SDL2_ttf
@@ -75,7 +77,6 @@ FIND_LIBRARY(SDL2_SDL2ttf_LIBRARY
         "The absolute path to SDL2_ttf library.")
 mark_as_advanced(SDL2_SDL2ttf_LIBRARY)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(SDL2_ttf
     REQUIRED_VARS SDL2_SDL2ttf_LIBRARY SDL2_TTF_INCLUDE_DIR
     VERSION_VAR SDL2_TTF_VERSION)

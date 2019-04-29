@@ -29,6 +29,8 @@
 #   CPPTOML_INCLUDE_DIRS - Include directories for cpptoml.
 #   cpptoml_FOUND - True if cpptoml has been found and can be used.
 
+include(FindPackageHandleStandardArgs)
+
 # Look for the header file.
 find_path(CPPTOML_INCLUDE_DIR
     NAMES
@@ -46,7 +48,6 @@ find_path(CPPTOML_INCLUDE_DIR
         "The directory where headers files of cpptoml resides")
 mark_as_advanced(CPPTOML_INCLUDE_DIR)
 
-include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(cpptoml
     REQUIRED_VARS CPPTOML_INCLUDE_DIR)
 
