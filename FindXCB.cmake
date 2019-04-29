@@ -77,7 +77,7 @@ if (XCB_FOUND)
     set_target_properties(freedesktop::libxcb PROPERTIES
       INTERFACE_INCLUDE_DIRECTORIES "${XCB_INCLUDE_DIRS}")
 
-    set_property(TARGET freedesktop::libxcb APPEND PROPERTY IMPORTED_LOCATION "${XCB_XCB_LIBRARY}")
+    set_property(TARGET freedesktop::libxcb APPEND PROPERTY IMPORTED_LOCATION "${XCB_xcb_LIBRARY}")
   endif ()
 endif ()
 
