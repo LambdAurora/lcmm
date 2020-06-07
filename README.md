@@ -1,6 +1,6 @@
 # LambdaCMakeModules (lcmm)
 
-![C++](https://img.shields.io/badge/language-CMake-9B599A.svg?style=flat-square)
+![CMake](https://img.shields.io/badge/language-CMake-9B599A.svg?style=flat-square)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/LambdAurora/lcmm/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/LambdAurora/lcmm.svg?style=flat-square)](https://github.com/LambdAurora/lcmm/issues/)
 
