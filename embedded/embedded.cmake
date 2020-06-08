@@ -19,11 +19,13 @@ function(add_embedded_executable TARGET SOURCES)
     # Create an ELF executable.
     add_executable(${TARGET}.elf ${_SOURCES})
 
+    target_link_options(${TARGET}.elf PUBLIC -Wl,-Map=${TARGET}.map,--cref)
+
     # Add a custom target that converts the generated ELF file to a hex file.
-    add_custom_target(${TARGET}.hex ALL DEPENDS ${TARGET}.elf COMMAND ${CMAKE_OBJCOPY} -Oihex ${TARGET}.elf ${TARGET}.hex)
+    add_custom_target(${TARGET}.hex ALL DEPENDS ${TARGET}.elf COMMAND ${CMAKE_OBJCOPY} -Oihex -S ${TARGET}.elf ${TARGET}.hex)
 
     # Add a custom target that converts the generated ELF file to a binary.
-    add_custom_target(${TARGET}.bin ALL DEPENDS ${TARGET}.elf COMMAND ${CMAKE_OBJCOPY} -Obinary ${TARGET}.elf ${TARGET}.bin)
+    add_custom_target(${TARGET}.bin ALL DEPENDS ${TARGET}.elf COMMAND ${CMAKE_OBJCOPY} -Obinary -S ${TARGET}.elf ${TARGET}.bin)
 endfunction()
 
 function(set_linker_script LINKER_SCRIPT)

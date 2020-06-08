@@ -25,7 +25,7 @@ set(CMAKE_CXX_COMPILER ${TOOLCHAIN}-g++)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_OBJCOPY ${TOOLCHAIN}-objcopy)
 set(CMAKE_SIZE ${TOOLCHAIN}-size)
-set(CMAKE_EXE_LINKER_FLAGS_INIT "${FLAGS_ARCHITECTURE} --specs=nosys.specs --specs=nano.specs")
+set(CMAKE_EXE_LINKER_FLAGS_INIT "${FLAGS_ARCHITECTURE} --specs=nosys.specs --specs=nano.specs -Wl,--gc-sections")
 
 # Paths and prefixes
 execute_process(
