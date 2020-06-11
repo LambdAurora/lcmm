@@ -120,20 +120,20 @@ foreach (component IN LISTS STM32CubeF0_FIND_COMPONENTS)
         set(component_path "Middlewares/ST/STM32_USB_Device_Library/Core")
     elseif (component STREQUAL "CDC")
         set(component "USB_${component}")
-        set(component_varname "USB_${component}")
+        set(component_varname "USB_${component_varname}")
 
         set(component_look_for "usbd_cdc")
         set(component_path "Middlewares/ST/STM32_USB_Device_Library/Class/CDC")
     elseif (component STREQUAL "HID")
         set(component "USB ${component}")
-        set(component_varname "USB_${component}")
+        set(component_varname "USB_${component_varname}")
 
         set(component_look_for "usbd_hid")
         set(component_path "Middlewares/ST/STM32_USB_Device_Library/Class/HID")
     endif ()
 
     # Look for the header files.
-    find_path(STM32CubeF0_${component_vername}_INCLUDE_DIR
+    find_path(STM32CubeF0_${component_varname}_INCLUDE_DIR
         NAMES
             "${component_look_for}.h"
         HINTS
@@ -150,7 +150,8 @@ foreach (component IN LISTS STM32CubeF0_FIND_COMPONENTS)
             "Inc"
             "include"
         DOC
-            "The directory where header files of STM32CubeF0 ${component} library resides")
+            "The directory where header files of STM32CubeF0 ${component} library resides"
+        NO_CMAKE_FIND_ROOT_PATH)
     mark_as_advanced(STM32CubeF0_${component_varname}_INCLUDE_DIR)
 
     # Look for the source files
@@ -170,8 +171,10 @@ foreach (component IN LISTS STM32CubeF0_FIND_COMPONENTS)
         NO_CMAKE_FIND_ROOT_PATH)
     mark_as_advanced(STM32CubeF0_${component_varname}_SOURCE_DIR)
 
-    if (STM32CubeF0_${component}_INCLUDE_DIR AND STM32CubeF0_${component}_SOURCE_DIR)
-        set(STM32CubeF0_${component}_FOUND true)
+    if (STM32CubeF0_${component_varname}_INCLUDE_DIR AND STM32CubeF0_${component_varname}_SOURCE_DIR)
+        set(STM32CubeF0_${component_varname}_FOUND true)
+    else ()
+        set(STM32CubeF0_${component_varname}_FOUND false)
     endif ()
 endforeach ()
 
