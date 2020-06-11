@@ -50,6 +50,24 @@ find_path(STM32CubeF0_HAL_INCLUDE_DIR
     NO_CMAKE_FIND_ROOT_PATH)
 mark_as_advanced(STM32CubeF0_HAL_INCLUDE_DIR)
 
+find_path(STM32CubeF0_HAL_LEGACY_INCLUDE_DIR
+    NAMES
+        stm32_hal_legacy.h
+    HINTS
+        "${STM32CubeF0_HAL_INCLUDE_DIR}/Legacy"
+        "$ENV{STM32CubeF0_ROOT}/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy"
+    PATHS
+        "$ENV{PROGRAMFILES}/STM32CubeF0/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy"
+        "${CMAKE_FIND_ROOT_PATH}/include"
+        /usr/include
+        /usr/local/include
+        /opt/local/include
+        /sw/include
+    DOC
+        "The directory where header files of STM32CubeF0 legacy HAL drivers resides"
+    NO_CMAKE_FIND_ROOT_PATH)
+mark_as_advanced(STM32CubeF0_HAL_LEGACY_INCLUDE_DIR)
+
 find_path(STM32CubeF0_CMSIS_INCLUDE_DIR
     NAMES
         cmsis_version.h
@@ -179,11 +197,12 @@ foreach (component IN LISTS STM32CubeF0_FIND_COMPONENTS)
 endforeach ()
 
 find_package_handle_standard_args(STM32CubeF0
-    REQUIRED_VARS STM32CubeF0_HAL_INCLUDE_DIR STM32CubeF0_CMSIS_INCLUDE_DIR STM32CubeF0_CMSIS_DEVICE_INCLUDE_DIR 
+    REQUIRED_VARS STM32CubeF0_HAL_INCLUDE_DIR STM32CubeF0_HAL_LEGACY_INCLUDE_DIR STM32CubeF0_CMSIS_INCLUDE_DIR STM32CubeF0_CMSIS_DEVICE_INCLUDE_DIR
         STM32CubeF0_HAL_SOURCE_DIR)
 
 if (STM32CubeF0_FOUND)
     set(STM32CubeF0_INCLUDE_DIRS ${STM32CubeF0_HAL_INCLUDE_DIR}
+        ${STM32CubeF0_HAL_LEGACY_INCLUDE_DIR}
         ${STM32CubeF0_CMSIS_INCLUDE_DIR}
         ${STM32CubeF0_CMSIS_DEVICE_INCLUDE_DIR}
         ${STM32CubeF0_USB_INCLUDE_DIR}
@@ -201,6 +220,7 @@ if (STM32CubeF0_FOUND)
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_gpio.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_i2c.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_i2c_ex.c
+        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_iwdg.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_pcd.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_pcd_ex.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_pwr.c
