@@ -15,8 +15,8 @@
 
 # Add the DFU target if it doesn't exist.
 function(add_dfu_target TARGET ALT_SETTING DFUSE_ADDRESS)
-    if (NOT TARGET dfu)
-        add_custom_target(dfu DEPENDS ${TARGET}.bin
+    if (NOT TARGET ${TARGET}.dfu)
+        add_custom_target(${TARGET}.dfu DEPENDS ${TARGET}.bin
             COMMAND rm -f ${TARGET}.dfu
             COMMAND cp ${TARGET}.bin ${TARGET}.dfu
             COMMAND dfu-suffix -a ${TARGET}.dfu # To make DFU util happy.
