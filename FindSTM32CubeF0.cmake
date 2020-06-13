@@ -228,7 +228,11 @@ if (STM32CubeF0_FOUND)
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_rcc.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_rcc_ex.c
         ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_tim.c
-        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_tim_ex.c)
+        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_tim_ex.c
+        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_uart.c
+        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_uart_ex.c
+        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_usart.c
+        ${STM32CubeF0_HAL_SOURCE_DIR}/stm32f0xx_hal_usart_ex.c)
 
     if (STM32CubeF0_USB_FOUND)
         set(STM32CubeF0_USB_SOURCES ${STM32CubeF0_USB_SOURCE_DIR}/usbd_core.c
